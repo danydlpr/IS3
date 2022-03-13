@@ -1,0 +1,122 @@
+<h5 class="center">Filtro de solicitudes</h5>
+<form class="col s12">
+    <div class="row">
+        <div class="input-field col s3 m6">
+            <select id="tipo" class="icons" [(ngModel)]="filterOT" name="tipo">
+                <option value="">Todo tipo de oferta</option>
+                <option value="Alquilar" data-icon=.\assets\images\hand.png class="left">Alquilar</option>
+                <option value="Vender" data-icon=".\assets\images\key.png" class="left">Vender</option>
+            </select>
+            <label>Tipo de oferta</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+            <select id="tipo2" class="icons" [(ngModel)]="filterType" name="tipo2">
+                <option value="">Todo tipo de inmueble</option>
+                <option *ngFor="let t of typeList" value="{{t.name}}">{{t.name}}</option>
+            </select>
+            <label>Tipo de inmueble</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <select id="dep"  [(ngModel)]="filterDep" name="dep">
+                <option value="">Todos los departamentos</option>
+                <option *ngFor="let d of departmentList" value="{{d.name}}">{{d.name}}</option>
+            </select>
+            <label>Departamento</label>
+        </div>
+        <div class="input-field col s12 m6">
+            <select id="city" [(ngModel)]="filterCity" name="city">
+                <option value="" >Todas las ciudades</option>
+                <option *ngFor="let c of cityList" value="{{c.name}}">{{c.name}}</option>
+            </select>
+            <label>Ciudad</label>
+        </div>
+    </div>
+
+
+</form>
+<table class="responsive-table">
+    <thead>
+        <tr>
+
+            <th>
+                Código de solicitud
+            </th>
+            <th>
+                Departamento
+            </th>
+            <th>
+                Ciudad
+            </th>
+            <th>
+                Dirección
+            </th>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Detalles de solicitud
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let r of requestList | selectRequest:filterType |
+         selectRequestOT: filterOT | selectRequestDep:filterDep | selectRequestCity: filterCity">
+
+            <td>
+                {{r.id}}
+            </td>
+            <td>
+                {{r.property.department}}
+            </td>
+            <td>
+                {{r.property.city}}
+            </td>
+            <td>
+                {{r.property.address}}
+            </td>
+            <td>
+                {{r.property.type}}
+            </td>
+            <td>
+                {{r.status}}
+            </td>
+            <td>
+                
+                <button data-target="modal1" class="btn modal-trigger">Modal</button>
+      
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div id="modalConfirmation" class="modal">
+    <div class="modal-content">
+        <h4>Confirmation Window</h4>
+        <p>Do you confirm remove this element?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn red">Cancel</a> &nbsp;
+        <a class="modal-close waves-effect waves-light btn green" (click)="removeElement()">Confirm</a>
+    </div>
+</div>
+
+
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>

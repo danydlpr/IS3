@@ -1,0 +1,70 @@
+<fieldset>
+    <legend>FORMULARIO DE REGISTRO</legend>
+    <div id="registry-page" class="row">
+        <form [formGroup]="fgValidation" (ngSubmit)="registryEvent()" class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="name" type="text" class="validate" formControlName="name">
+                    <label for="name" data-error="wrong">Nombre</label>
+                    <div class="warning-validation" *ngIf="fg.name.errors && (fg.name.dirty || fg.name.touched)">
+                        <strong *ngIf="fg.name.errors.required">
+                            Nombre requerido!<br />
+                        </strong>
+                        <strong *ngIf="fg.name.errors.minlength">
+                            El nombre debe tener al menos 3 caracteres<br />
+                        </strong>
+                        <strong *ngIf="fg.name.errors.maxlength">
+                            El nombre debe tener menos de 20 caracteres!<br />
+                        </strong>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="email" type="email" class="validate" formControlName="email">
+                        <label for="email">Correo Electrónico</label>
+                        <div class="warning-validation" *ngIf="fg.email.errors && (fg.email.dirty || fg.email.touched)">
+                            <strong *ngIf="fg.email.errors.required">
+                                Correo electrónico requerido!<br />
+                            </strong>
+                            <strong *ngIf="fg.email.errors.minlength">
+                                El Correo electrónico debe tener al menos 5 caracteres!<br />
+                            </strong>
+                            <strong *ngIf="fg.email.errors.maxlength">
+                                El Correo electrónico debe tener menos de 40 caracteres!<br />
+                            </strong>
+                            <strong *ngIf="fg.email.errors.email">
+                                Debe ser un correo electrónico!
+                            </strong>
+                        </div>
+                    </div>
+
+
+                    <div>
+
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" formControlName="description"
+                                class="materialize-textarea"></textarea>
+                            <label for="textarea1">Mensaje</label>
+                            <div class="warning-validation"
+                                *ngIf="fg.description.errors && (fg.description.dirty || fg.description.touched)">
+                                <strong *ngIf="fg.description.errors.required">
+                                    Mensaje requerido!<br />
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s9">
+
+                    </div>
+                    <button
+                        [disabled]="fg.name.errors  || fg.email.errors || fg.description.errors"
+                        class="btn waves-effect waves-light green" type="submit" name="action">Enviar
+
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>

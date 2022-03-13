@@ -1,0 +1,27 @@
+
+.modal{
+	width:100%; 
+	height:100%; 
+	background: rgba(0,0,0,.3);
+	position:fixed;
+	top:0;
+	left:0;
+	display:none;
+}
+
+.ventana{
+	width:400px;
+	height:400px;
+	background: #fff;
+	text-align:center;
+	position:absolute;
+	top:20%;
+	left:-200px;
+	margin-left:50%;
+	}
+	
+.boton-abrir, .boton-cerrar{
+	margin:15px;
+	padding:15px;
+	font-size:1.5em;
+}

@@ -1,0 +1,74 @@
+
+<table class="responsive-table">
+    <thead>
+        <tr>
+
+            <th>
+                Dirección
+            </th>
+            <th>
+                Tipo de inmueble
+            </th>
+            <th>
+                Tipo de oferta
+            </th>
+            <th>
+                Fecha de solicitud
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                foto
+            </th>
+            <th>
+                Eliminar solicitud
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let r of requestList">
+
+            <td>
+                {{r.property.address}}
+            </td>
+            <td>
+                {{r.property.type}}
+            </td>
+            <td>
+                {{r.property.offerType}}
+            </td>
+            <td>
+                {{r.requestDate}}
+            </td>
+            <td *ngIf = "r.property.status == 'Aceptada';else Aceptado" >
+                
+                {{r.property.status}}
+            </td>
+            <ng-template #Aceptado>
+                {{r.status}}
+            </ng-template>
+            <td>
+                <img src="{{r.property.photography}}" style="width: 70%;" alt="image" class="square" />
+            </td>
+            <td>
+                <button class="btn waves-effect waves-light red" type="button" name="action"
+                    (click)="removeRequest(r.id, r.property) ">Eliminar
+                    <i class="material-icons right">delete</i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div id="modalConfirmation" class="modal">
+    <div class="modal-content">
+        <h4>Ventana de confirmación</h4>
+        <p>¿Quiere eliminar esta solicitud?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-light btn red">Cancelar</a> &nbsp;
+        <a class="modal-close waves-effect waves-light btn green" (click)="removeRequest()">Confirmar</a>
+    </div>
+</div>

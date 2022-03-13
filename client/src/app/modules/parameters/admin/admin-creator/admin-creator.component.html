@@ -1,0 +1,112 @@
+<fieldset>
+    <legend>FORMULARIO DE REGISTRO DE ADMINISTRADOR</legend>
+    <div id="registry-page" class="row">
+        <form [formGroup]="fgValidation" (ngSubmit)="registryEvent()" class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="name" type="text" class="validate" formControlName="name">
+                    <label for="name" data-error="wrong">Nombre</label>
+                    <div class="warning-validation" *ngIf="fg.name.errors && (fg.name.dirty || fg.name.touched)">
+                        <strong *ngIf="fg.name.errors.required">
+                            Nombre requerido!<br />
+                        </strong>
+                        <strong *ngIf="fg.name.errors.minlength">
+                            El nombre debe tener al menos 3 caracteres<br />
+                        </strong>
+                        <strong *ngIf="fg.name.errors.maxlength">
+                            El nombre debe tener menos de 20 caracteres!<br />
+                        </strong>
+
+                    </div>
+                </div>
+                <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate" formControlName="last_name"> 
+                    <label for="last_name">Apellidos</label>
+                    <div class="warning-validation"
+                        *ngIf="fg.last_name.errors && (fg.last_name.dirty || fg.last_name.touched)">
+                        <strong *ngIf="fg.last_name.errors.required">
+                            Apellido requerido!<br />
+                        </strong>
+                        <strong *ngIf="fg.last_name.errors.minlength">
+                            El apellido debe tener al menos 5 caracteres!<br />
+                        </strong>
+                        <strong *ngIf="fg.last_name.errors.maxlength">
+                            El apellido debe tener menos de 25 caracteres!<br />
+                        </strong>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="email" type="email" class="validate" formControlName="email">
+                    <label for="email">Correo Electrónico</label>
+                    <div class="warning-validation" *ngIf="fg.email.errors && (fg.email.dirty || fg.email.touched)">
+                        <strong *ngIf="fg.email.errors.required">
+                            Correo electrónico requerido!<br />
+                        </strong>
+                        <strong *ngIf="fg.email.errors.minlength">
+                            El Correo electrónico debe tener al menos 5 caracteres!<br />
+                        </strong>
+                        <strong *ngIf="fg.email.errors.maxlength">
+                            El Correo electrónico debe tener menos de 40 caracteres!<br />
+                        </strong>
+                        <strong *ngIf="fg.email.errors.email">
+                            Debe ser un correo electrónico!
+                        </strong>
+                    </div>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="password" type="password" class="validate" formControlName="password">
+                    <label for="password">Contraseña</label>
+                    <div class="warning-validation"
+                        *ngIf="fg.password.errors && (fg.password.dirty || fg.password.touched)">
+                        <strong *ngIf="fg.password.errors.required">
+                            Contraseña requerida!<br />
+                        </strong>
+                        <strong *ngIf="fg.password.errors.minlength">
+                            La contraseña debe tener al menos 8 caracteres!<br />
+                        </strong>
+                        <strong *ngIf="fg.password.errors.maxlength">
+                            La contraseña debe tener menos de 15 caracteres!
+                        </strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s4">
+
+                </div>
+                <div class="input-field col s3">
+                    <input id="phone" type="text" class="validate" formControlName="phone">
+                    <label for="phone">Teléfono</label>
+                    <div class="warning-validation"
+                        *ngIf="fg.phone.errors && (fg.phone.dirty || fg.phone.touched)">
+                        <strong *ngIf="fg.phone.errors.required">
+                            Teléfono requerida!<br />
+                        </strong>
+                        <strong *ngIf="fg.phone.errors.minlength">
+                            El Teléfono debe tener al menos 8 caracteres!<br />
+                        </strong>
+                        <strong *ngIf="fg.phone.errors.maxlength">
+                            El Teléfono debe tener menos de 15 caracteres!
+                        </strong>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <div class="col s9">
+
+                </div>
+                <button [disabled]="fg.name.errors || fg.password.errors || fg.last_name.errors || fg.email.errors || fg.phone.errors"
+                    class="btn waves-effect waves-light green" type="submit" name="action">Registrar Admin
+                    
+                </button>
+            </div>
+
+        </form>
+    </div>
+</fieldset>

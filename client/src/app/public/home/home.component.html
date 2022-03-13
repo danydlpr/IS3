@@ -1,0 +1,128 @@
+<div class="rigth-align">
+    <h5 class="center">Visión</h5>
+
+    <p>La Inmobiliaria Hogar Colombia en el año 2023, se posicionará entre las tres mejores inmobiliarias del país,
+        logrando expandirse con 2 puntos estratégicos de información y negociación, para brindar oportunamente un
+        portafolio
+        altamente calificado a nuestros clientes en servicios inmobiliarios; con el apoyo de la tecnología y un talento
+        humano capacitado y comprometido
+        considerado y catalogado como nuestro mejor activo, lograremos generar y posicionar la confianza y fidelidad
+        entre
+        nuestros clientes.</p>
+</div>
+
+<div class="left-align">
+<h5 class="center">Misión</h5>
+
+<p>Somos un equipo humano y profesional que exploramos continuamente el sector inmobiliario a través de soluciones de
+    intermediación en la toma de predios para arriendo y venta ubicados en el área metropolitana de Bucaramanga,
+    generando oportunidades de negocio y satisfaciendo las necesidades de nuestros clientes a través de una
+    administración
+    responsable y honesta, con atención personalizada y una filosofía de servicios integrales de calidad.</p>
+
+</div>
+
+
+<h5 class="center">Filtro</h5>
+<form class="col s12">
+    <div class="row">
+        <div class="input-field col s3 m6">
+            <select id="tipo" class="icons" [(ngModel)]="filterOT" name="tipo">
+                <option value="">Todo tipo de oferta</option>
+                <option value="Alquilar" data-icon=.\assets\images\hand.png class="left">Alquilar</option>
+                <option value="Vender" data-icon=".\assets\images\key.png" class="left">Vender</option>
+            </select>
+            <label>Tipo de oferta</label>
+        </div>
+
+        <div class="input-field col s12 m6">
+            <select id="tipo2" class="icons" [(ngModel)]="filterType" name="tipo2">
+                <option value="">Todo tipo de inmueble</option>
+                <option *ngFor="let t of typeList" value="{{t.name}}">{{t.name}}</option>
+            </select>
+            <label>Tipo de inmueble</label>
+        </div>
+    </div>
+
+
+</form>
+<label>Búsqueda: <input [(ngModel)]="searchText"></label> <br>
+<br />
+<table class="responsive-table">
+    <thead>
+        <tr>
+            <th>
+                Departamento
+            </th>
+            <th>
+                Ciudad
+            </th>
+            <th>
+                Dirección
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Tipo de oferta
+            </th>
+            <th>
+                Foto
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Descripción
+            </th>
+            <th>
+                Solicitar
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of propertyList   |  filter:searchText |
+         select:filterType | selectOT: filterOT  | status: filterStatus">
+        
+            <td>
+                {{p.department}}
+            </td>
+            <td>
+                {{p.city}}
+            </td>
+            <td>
+                {{p.address}}
+            </td>
+            <td>
+                {{p.price}}
+            </td>
+            <td>
+                {{p.type}}
+            <td>
+                {{p.offerType}}
+            </td>
+
+            <td>
+
+                <img src="{{p.photography}}" style="width: 70%;" alt="image" class="square" />
+            </td>
+            <td>
+                {{p.status}}
+            </td>
+            <td>
+                {{p.description}}
+            </td>
+            <td>
+                <button class="btn waves-effect waves-light orange" type="button" name="action"
+                    (click)="sendRequest(p,p.id)">Solicitar
+                </button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

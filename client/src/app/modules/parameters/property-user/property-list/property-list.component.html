@@ -1,0 +1,84 @@
+<br />
+<table class="responsive-table">
+    <thead>
+        <tr>
+
+            <th>
+                Departamento
+            </th>
+            <th>
+                Ciudad
+            </th>
+            <th>
+                Dirección
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Tipo de oferta
+            </th>
+            <th>
+                Foto
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Editar
+            </th>
+            <th>
+                Aceptar
+            </th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of propertyList">
+
+            <td>
+                {{p.department}}
+            </td>
+            <td>
+                {{p.city}}
+            </td>
+            <td>
+                {{p.address}}
+            </td>
+            <td>
+                {{p.price}}
+            </td>
+            <td>
+                {{p.type}}
+            </td>
+
+
+            <td>
+                {{p.offerType}}
+            </td>
+
+            <td>
+                <img src="{{p.photography}}" style="width: 70%;" alt="image" class="square" />
+            </td>
+            <td>
+                {{p.status}}
+            </td>
+            <td>
+                <a routerLink="/property/property-editor/{{p.id}}" class="waves-effect waves-light btn orange">Editar
+                    <i class="material-icons right">edit</i>
+                </a>
+            </td>
+            <td>
+                <button (click)=" aceptRequest(p) "class="waves-effect waves-light btn green"
+                *ngIf="p.status == 'Solicitada' " >Aceptar
+                    <i class="material-icons right">send</i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

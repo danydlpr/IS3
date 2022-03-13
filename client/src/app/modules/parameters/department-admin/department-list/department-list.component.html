@@ -1,0 +1,36 @@
+<br />
+<a routerLink="/department/creator" class="waves-effect waves-light btn">Nuevo departamento</a>
+<br />
+<br />
+<table class="responsive-table">
+    <thead>
+        <tr>
+           
+            <th>
+                Nombre del departamento
+            </th>
+            <th>
+                Código
+            </th>
+            <th>
+               Editar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of departmentList">
+            
+            <td>
+                {{d.name}}
+            </td>
+            <td>
+                {{d.code}}
+            </td>
+            <td>
+                <a routerLink="/department/department-editor/{{d.id}}" class="waves-effect waves-light btn orange">Editar
+                    <i class="material-icons right">edit</i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

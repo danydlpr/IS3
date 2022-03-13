@@ -1,0 +1,33 @@
+{
+  "name": "department",
+  "plural": "departments",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "code": {
+      "type": "string",
+      "required": true
+    },
+    "_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "department-cities": {
+      "type": "hasMany",
+      "model": "department",
+      "foreignKey": "_departmentId",
+      "primaryKey": "_id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

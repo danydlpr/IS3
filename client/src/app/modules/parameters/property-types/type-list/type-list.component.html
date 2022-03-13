@@ -1,0 +1,30 @@
+<br />
+<a routerLink="/type/creator" class="waves-effect waves-light btn">Nuevo tipo de inmueble</a>
+<br />
+<br />
+<table class="responsive-table">
+    <thead>
+        <tr>
+           
+            <th>
+                Nombre
+            </th>
+            <th>
+                Editar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let t of typeList">
+            
+            <td>
+                {{t.name}}
+            </td>
+            <td>
+                <a routerLink="/type/type-editor/{{t.id}}" class="waves-effect waves-light btn orange">Editar
+                    <i class="material-icons right">edit</i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

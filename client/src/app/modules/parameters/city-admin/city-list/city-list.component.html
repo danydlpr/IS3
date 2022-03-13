@@ -1,0 +1,43 @@
+<br />
+<a routerLink="/city/creator" class="waves-effect waves-light btn">Nueva Ciudad</a>
+<br />
+<br />
+<table class="responsive-table">
+    <thead>
+        <tr>
+           
+            <th>
+                Nombre de la ciudad
+            </th>
+            <th>
+                Código
+            </th>
+            <th>
+                Departamento
+            </th>
+            <th>
+                Editar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of cityList">
+            
+            <td>
+                {{c.name}}
+            </td>
+            <td>
+                {{c.code}}
+            </td>
+            <td>
+                {{c._departmentId}}
+            </td>
+            <td>
+                <a routerLink="/city/city-editor/{{c.id}}" class="waves-effect waves-light btn orange">Editar
+                    <i class="material-icons right">edit</i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

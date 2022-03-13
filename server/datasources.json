@@ -1,0 +1,30 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://localhost:27017/inmobiliariaDB",
+    "database": "inmobiliariaDB",
+    "password": "",
+    "name": "db",
+    "user": "",
+    "useNewUrlParser": true,
+    "connector": "mongodb"
+  },
+  "Email": {
+    "host": "Email",
+    "name": "Email",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "pruebas.prog3.i@gmail.com",
+          "pass": "oncecaldas11"
+        }
+      }
+    ]
+  }
+}
